@@ -2,6 +2,6 @@ FROM node:14
 ENV NODE_ENV=production
 WORKDIR /app
 COPY package* ./
-COPY index.js ./
+ADD src ./src
 RUN npm i
-CMD ["node", "index.js"]
+CMD ["npm", "start"]
