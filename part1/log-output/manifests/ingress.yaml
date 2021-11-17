@@ -3,7 +3,9 @@ kind: Ingress
 metadata:
   name: logoutput-ingress
   annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /
+    kubernetes.io/ingress.class: traefik
+    traefik.ingress.kubernetes.io/router.middlewares: default-replacepath-to-root@kubernetescrd
+    traefik.ingress.kubernetes.io/router.priority: "42"
 spec:
   rules:
   - http:
