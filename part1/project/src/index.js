@@ -3,14 +3,13 @@ const Router = require('@koa/router')
 const fs = require('fs')
 const mime = require('mime-types')
 const axios = require('axios')
-const { resolve } = require('path')
+const path = require('path')
+const serve = require('koa-static')
 const app = new Koa()
 const router = new Router()
 const port = process.env.HTTP_PORT || 3000
 
-router.get('/', (ctx, next) => {
-    ctx.body = 'Hello World!'
-})
+app.use(serve(path.join(__dirname, '../public')))
 
 router.get('/dailyimage', async (ctx) => {
     const today = new Date(Date.now()).toISOString().slice(0, 10)
