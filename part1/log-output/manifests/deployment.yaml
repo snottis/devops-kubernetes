@@ -15,6 +15,9 @@ spec:
       volumes:
         - name: temp
           emptyDir: {}
+        - name: ping
+          persistentVolumeClaim:
+            claimName: pingpong-claim
       containers:
         - name: log-output-writer
           image: snottis/log-output:writer
@@ -28,3 +31,5 @@ spec:
           volumeMounts:
             - name: temp
               mountPath: /tmp
+              name: ping
+              mountPath: /ping

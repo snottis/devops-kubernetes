@@ -12,7 +12,14 @@ spec:
       labels:
         app: project
     spec:
+      volumes:
+        - name: img
+          persistentVolumeClaim:
+            claimName: img-claim
       containers:
         - name: project
           image: snottis/project:v0.3
           imagePullPolicy: Always
+          volumeMounts:
+            - name: img
+              mountPath: /img

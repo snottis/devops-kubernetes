@@ -12,8 +12,14 @@ spec:
       labels:
         app: pingpong
     spec:
-      
+      volumes:
+        - name: ping
+          persistentVolumeClaim:
+            claimName: pingpong-claim
       containers:
         - name: log-output
-          image: snottis/pingpong:1.09
+          image: snottis/pingpong:1.11
           imagePullPolicy: Always
+          volumeMounts:
+            - name: ping
+              mountPath: /ping
