@@ -12,8 +12,19 @@ spec:
       labels:
         app: log-output
     spec:
-      
+      volumes:
+        - name: temp
+          emptyDir: {}
       containers:
-        - name: log-output
-          image: snottis/log-output:1.07
+        - name: log-output-writer
+          image: snottis/log-output:writer
           imagePullPolicy: Always
+          volumeMounts:
+            - name: temp
+              mountPath: /tmp
+        - name: log-output-reader
+          image: snottis/log-output:reader
+          imagePullPolicy: Always
+          volumeMounts:
+            - name: temp
+              mountPath: /tmp

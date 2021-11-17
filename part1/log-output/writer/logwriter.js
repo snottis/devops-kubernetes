@@ -1,6 +1,8 @@
+const fs = require('fs')
+
 const logger = async (logfunc) => {
     setInterval(() =>{
-        console.log(logfunc())
+        fs.writeFileSync('/tmp/log', logfunc())
     }, 5000)
 }
 
