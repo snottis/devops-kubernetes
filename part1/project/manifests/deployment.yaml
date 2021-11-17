@@ -18,7 +18,7 @@ spec:
             claimName: img-claim
       containers:
         - name: project
-          image: snottis/project:v0.3
+          image: snottis/project:v0.6
           imagePullPolicy: Always
           volumeMounts:
             - name: img
