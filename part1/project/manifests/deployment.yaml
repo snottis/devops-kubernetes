@@ -12,8 +12,7 @@ spec:
       labels:
         app: project
     spec:
-      
       containers:
         - name: project
-          image: snottis/project:v0.1
+          image: snottis/project:v0.3
           imagePullPolicy: Always
