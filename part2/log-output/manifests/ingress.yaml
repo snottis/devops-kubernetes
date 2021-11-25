@@ -2,9 +2,10 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: logoutput-ingress
+  namespace: exercises
   annotations:
     kubernetes.io/ingress.class: traefik
-    traefik.ingress.kubernetes.io/router.middlewares: default-replacepath-to-root@kubernetescrd
+    traefik.ingress.kubernetes.io/router.middlewares: exercises-replacepath-to-root@kubernetescrd
     traefik.ingress.kubernetes.io/router.priority: "42"
 spec:
   rules:
