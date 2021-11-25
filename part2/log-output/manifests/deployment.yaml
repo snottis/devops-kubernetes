@@ -29,3 +29,9 @@ spec:
           volumeMounts:
             - name: temp
               mountPath: /tmp
+          env:
+            - name: MESSAGE
+              valueFrom:
+                configMapKeyRef:
+                  name: dotenv-configmap
+                  key: message

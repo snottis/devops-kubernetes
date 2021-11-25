@@ -8,7 +8,7 @@ const port = process.env.HTTP_PORT || 3000
 
 router.get('/', async (ctx, next) => {
     const res = await axios.get('http://pingpong-svc/')
-    ctx.body = `${fs.readFileSync('/tmp/log').toString()}\n${res.data}`
+    ctx.body = `${process.env.MESSAGE}\n${fs.readFileSync('/tmp/log').toString()}\n${res.data}`
 })
 
 app.use(router.routes()).use(router.allowedMethods())

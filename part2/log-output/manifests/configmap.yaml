@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: dotenv-configmap
+  namespace: exercises
+data:
+  message: Hello
