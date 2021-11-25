@@ -18,8 +18,14 @@ spec:
             claimName: img-claim
       containers:
         - name: project
-          image: snottis/project:v0.7
+          image: snottis/project:2.02
           imagePullPolicy: Always
           volumeMounts:
             - name: img
               mountPath: /img
+        - name: project-front
+          image: snottis/project-front:2.02
+          imagePullPolicy: Always
+          env:
+            - name: HTTP_PORT
+              value: "3001"

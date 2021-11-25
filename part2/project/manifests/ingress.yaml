@@ -15,4 +15,4 @@ spec:
           service:
             name: project-svc
             port:
-              number: 1234
+              number: 1235

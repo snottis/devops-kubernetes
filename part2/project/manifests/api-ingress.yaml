@@ -1,0 +1,25 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: project-api-ingress
+  annotations:
+    kubernetes.io/ingress.class: traefik
+    traefik.ingress.kubernetes.io/router.priority: "100"
+spec:
+  rules:
+  - http:
+      paths:
+      - path: /dailyimage
+        pathType: Exact
+        backend:
+          service:
+            name: project-svc
+            port:
+              number: 1234
+      - path: /todo
+        pathType: Exact
+        backend:
+          service:
+            name: project-svc
+            port:
+              number: 1234

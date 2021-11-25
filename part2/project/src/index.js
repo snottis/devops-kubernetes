@@ -4,12 +4,25 @@ const fs = require('fs')
 const mime = require('mime-types')
 const axios = require('axios')
 const path = require('path')
-const serve = require('koa-static')
+const bP = require('koa-bodyparser')
 const app = new Koa()
+app.use(bP())
 const router = new Router()
 const port = process.env.HTTP_PORT || 3000
 
-app.use(serve(path.join(__dirname, '../public')))
+const TODOS = []
+
+router.get('/todo', async (ctx) => {
+    ctx.body = TODOS
+})
+
+router.post('/todo', async (ctx) => {
+    TODOS.push({
+        description: ctx.request.body["description"],
+        done: false
+    })
+    ctx.status = 201
+})
 
 router.get('/dailyimage', async (ctx) => {
     const today = new Date(Date.now()).toISOString().slice(0, 10)
