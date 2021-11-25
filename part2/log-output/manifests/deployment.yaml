@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: log-output
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: log-output
+  template:
+    metadata:
+      labels:
+        app: log-output
+    spec:
+      volumes:
+        - name: temp
+          emptyDir: {}
+      containers:
+        - name: log-output-writer
+          image: snottis/log-output:writer
+          imagePullPolicy: Always
+          volumeMounts:
+            - name: temp
+              mountPath: /tmp
+        - name: log-output-reader
+          image: snottis/log-output:reader
+          imagePullPolicy: Always
+          volumeMounts:
+            - name: temp
+              mountPath: /tmp
